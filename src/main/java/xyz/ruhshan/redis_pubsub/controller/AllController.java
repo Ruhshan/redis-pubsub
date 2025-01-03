@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.ruhshan.redis_pubsub.event.OrderEvent;
+import xyz.ruhshan.redis_pubsub.event.PaymentEvent;
 import xyz.ruhshan.redis_pubsub.service.RedisMessagePublisher;
 
 @RestController
@@ -19,6 +20,11 @@ public class AllController {
     @PostMapping("/order")
     public void createOrder(@RequestBody OrderEvent orderEvent){
         redisMessagePublisher.publishOrder(orderEvent);
+    }
+
+    @PostMapping("/payment")
+    public void createPayment(@RequestBody PaymentEvent paymentEvent){
+        redisMessagePublisher.publishPayment(paymentEvent);
     }
 
 }
