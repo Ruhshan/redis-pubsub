@@ -11,13 +11,13 @@ import static xyz.ruhshan.redis_pubsub.configuration.Topics.PAYMENT_TOPIC;
 @Service
 public class RedisListeners {
 
-    @RedisListener(topic = ORDER_TOPIC)
+    @RedisListener(channel = ORDER_TOPIC)
     public void orderListener(OrderEvent orderEvent){
 
         System.out.println("Order Event Received");
     }
 
-    @RedisListener(topic = PAYMENT_TOPIC)
+    @RedisListener(channel = PAYMENT_TOPIC)
     public void paymentListener(PaymentEvent paymentEvent){
 
         System.out.println("Payment Event Received");

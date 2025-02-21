@@ -16,7 +16,7 @@ public class ListenerScanner {
         scanListeners(applicationContext);
     }
 
-    public static List<String> getTopics() {
+    public static List<String> getChannels() {
         return new ArrayList<>(redisListenerMap.keySet());
     }
 
@@ -49,12 +49,13 @@ public class ListenerScanner {
                 RedisListener annotation = method.getDeclaredAnnotation(RedisListener.class);
 
 
-                String topic = annotation.topic();
+                String channel = annotation.channel();
 
                 redisListenerMap
-                        .computeIfAbsent(topic, k -> new ArrayList<>())
+                        .computeIfAbsent(channel, k -> new ArrayList<>())
                         .add(listenerDetails);
             }
         }
     }
+
 }

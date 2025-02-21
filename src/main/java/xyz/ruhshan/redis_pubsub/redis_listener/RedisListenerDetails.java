@@ -11,6 +11,4 @@ public class RedisListenerDetails {
     private Object bean;
     private Method method;
     private Class<?> parameterType;
-
-
 }

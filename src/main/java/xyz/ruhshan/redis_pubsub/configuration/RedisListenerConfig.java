@@ -25,8 +25,8 @@ public class RedisListenerConfig {
     public RedisMessageListenerContainer redisContainer(RedisConnectionFactory connectionFactory) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        List<ChannelTopic> subscribedTopics = ListenerScanner.getTopics().stream().map(ChannelTopic::of).toList();
-        container.addMessageListener(masterListener, subscribedTopics);
+        List<ChannelTopic> subscribedChannels = ListenerScanner.getChannels().stream().map(ChannelTopic::of).toList();
+        container.addMessageListener(masterListener, subscribedChannels);
         return container;
     }
 
